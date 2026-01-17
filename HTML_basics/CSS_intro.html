@@ -1,0 +1,60 @@
+<html lang="en">
+    <header>
+        <title>Learning Note of CSS</title>
+        <!-- css -->
+        <style>
+            h1 {
+                color: black;
+                font-size: 45px;
+                text-align: center;
+            }
+            /* selector h2 implies the following rules are applied to all h2 elements in html document*/
+            h2 {
+                color: black;
+                font-size: 30px;
+                text-align: left;
+            }
+            h3 {
+                color: black;
+                font-size: 28px;
+                text-align: left;
+            }
+            h4, li, p {
+                font-size: 25px;
+            }
+            a:hover{
+                color: red;
+            }
+        </style>
+    </header>
+    <body>
+        <h1 style="text-align: center;">Introduction of CSS</h1>
+        <h2>Syntax</h2>
+        <p>
+            By using selectors to specify the elements you want to style, it simplifies the styling of html files.
+            <br>Selectors can decide which elements to apply to based on type, id, class, etc. Its flexibility
+            allows more efficient and concise styling.<br>
+            <a href='"https://www.geeksforgeeks.org/css/css-selectors/"'>Details about different kinds of selectors</a>
+        </p>
+        <img src="css_syntax.webp" style="width: 400px; height: auto;" alt="Image">
+        <h3>Selectors</h3>
+        <!-- html list-->
+        <ol>
+            <li>Basic Selectors:used to target elements by html element names</li>
+                <ul style="list-style-type: disc;">
+                    <li>Universal Selector(*): apply to all elements.</li>
+                    <li>Element Selector: h1, p, etc.</li>
+                    <li>Class Selector(.): apply to a certain class. Different elements could be assigned with the 
+                        same class value while a single element could have multiple class values.
+                    </li>
+                    <li>ID selector(#): apply to the speific element with the unique id.</li>
+                </ul>
+            <li>Combinator Selectors:target elements by the hierarchy or position of differrent elements</li>
+                <ul style="list-style-type: disc;">
+                    <li>Descendant Selectors( ):target an element inside another.</li>
+                    <li>Child Selectors(>):target the direct child elements of a parent.</li>
+                    <li>Adjacent Selectors(+):target the elements immediately following the other.</li>
+                </ul>
+        </ol>
+    </body>
+</html>
