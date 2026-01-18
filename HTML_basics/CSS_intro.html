@@ -3,28 +3,50 @@
         <title>Learning Note of CSS</title>
         <!-- css -->
         <style>
+            body{
+                background: linear-gradient(to bottom, rgb(235, 250, 231), rgb(109, 147, 127));
+                margin-left: 180px;
+                margin-right: 180px;
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+            img{
+                display: block;
+                margin: 0 auto;
+            }
             h1 {
-                color: black;
                 font-size: 45px;
                 text-align: center;
             }
             /* selector h2 implies the following rules are applied to all h2 elements in html document*/
             h2 {
-                color: black;
                 font-size: 30px;
                 text-align: left;
             }
             h3 {
-                color: black;
                 font-size: 28px;
                 text-align: left;
             }
             h4, li, p {
                 font-size: 25px;
             }
+            a {
+                color: rgb(192, 73, 55);
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .content{
+                width: 80%; /*set the width of elements with class value "content" to 80% of the container*/
+            }
+            /* hover is one pesudo-class, refer to the hovered state of an element */
             a:hover{
                 color: red;
             }
+            /* descendant selector combined with pesudo-element marker*/
+            ul li::marker{
+                color:rgb(67, 109, 148);
+            }
+
         </style>
     </header>
     <body>
@@ -34,12 +56,12 @@
             By using selectors to specify the elements you want to style, it simplifies the styling of html files.
             <br>Selectors can decide which elements to apply to based on type, id, class, etc. Its flexibility
             allows more efficient and concise styling.<br>
-            <a href='"https://www.geeksforgeeks.org/css/css-selectors/"'>Details about different kinds of selectors</a>
+            <a href="https://www.geeksforgeeks.org/css/css-selectors/">Details about different kinds of selectors.</a>
         </p>
-        <img src="css_syntax.webp" style="width: 400px; height: auto;" alt="Image">
+        <a href="css_syntax.webp"><img src="css_syntax.webp" style="width: 600px; height: auto;" alt="Image"></a>
         <h3>Selectors</h3>
         <!-- html list-->
-        <ol>
+        <ol class="content">
             <li>Basic Selectors:used to target elements by html element names</li>
                 <ul style="list-style-type: disc;">
                     <li>Universal Selector(*): apply to all elements.</li>
@@ -53,8 +75,27 @@
                 <ul style="list-style-type: disc;">
                     <li>Descendant Selectors( ):target an element inside another.</li>
                     <li>Child Selectors(>):target the direct child elements of a parent.</li>
-                    <li>Adjacent Selectors(+):target the elements immediately following the other.</li>
+                    <li>Adjacent Sibling Selectors(+):target the elements immediately following the other.</li>
+                    <li>General Sibling Selectors(~):applied to all the elements following a specific element.</li>
                 </ul>
+            <li>Attribute Selectors:target elements based on the presence or value of certain attributes.</li>
+                <ul style="list-style-type: disc;">
+                    <li>Presence Selector:select elements with a certain attribute.</li>
+                    <li>Atrribute Value Selector:target elements with a particular attribute value.</li>
+                    <li>Substring Matching:matches elements where the attribute contains a specific substring,
+                        and there are three forms of substring matching based on the start position of substring:
+                        begin with(^=), contain(*=), end with($=).</li>
+                </ul>
+            <li><a href=https://www.geeksforgeeks.org/css/css-pseudo-classes target="_blank">Pesudo-Classes</a>:
+                pesudo-classes are the keywords used to define a specific state or condition of an element, such as 
+                hoverd, focused, etc. Adding pesudo-class to a selector(selector:pesudo-class) enables to style elements
+                of special state.
+            </li>
+            <li><a href="https://www.geeksforgeeks.org/css/css-pseudo-elements/" target="_blank">Pesudo-Elements</a>:a 
+                pesudo-elementb is a keyword referring to different parts of an element, such as the first line of a 
+                paragraph. Adding pesudo-elements to a selector(selector::pesudo-class) allows to style different parts 
+                of an element.
+            </li>
         </ol>
     </body>
 </html>
