@@ -10,8 +10,23 @@
                 margin-top: 50px;
                 margin-bottom: 50px;
             }
-            img{
+            a {
+                color: rgb(192, 73, 55);
+                text-decoration: none;
+                font-weight: bold;
+            }
+            /* has is a relation pesudo-class, a:has(img) select the <a> that contains an image anywhere. Use a:has()
+                to avoid styling other hyperlinks attached to texts */
+            a:has(img){
+                display: block; /* configure it as a block-level element */
+                width: max-content; /* shrink it to fit the size of content */
+                margin: 0 auto; /* center it to the parent */
+            }
+            a img{
+                /* configure it as a block-level element */
                 display: block;
+                border: 5px solid black;
+                /* margin: 0 auton centers the element to its parent */
                 margin: 0 auto;
             }
             h1 {
@@ -28,12 +43,7 @@
                 text-align: left;
             }
             h4, li, p {
-                font-size: 25px;
-            }
-            a {
-                color: rgb(192, 73, 55);
-                text-decoration: none;
-                font-weight: bold;
+                font-size: 28px;
             }
             .content{
                 width: 80%; /*set the width of elements with class value "content" to 80% of the container*/
@@ -58,7 +68,7 @@
             allows more efficient and concise styling.<br>
             <a href="https://www.geeksforgeeks.org/css/css-selectors/">Details about different kinds of selectors.</a>
         </p>
-        <a href="css_syntax.webp"><img src="css_syntax.webp" style="width: 600px; height: auto;" alt="Image"></a>
+        <a href="img/css_syntax.webp"><img src="img/css_syntax.webp" style="width: 600px; height: auto;" alt="Image"></a>
         <h3>Selectors</h3>
         <!-- html list-->
         <ol class="content">
@@ -92,7 +102,7 @@
                 of special state.
             </li>
             <li><a href="https://www.geeksforgeeks.org/css/css-pseudo-elements/" target="_blank">Pesudo-Elements</a>:a 
-                pesudo-elementb is a keyword referring to different parts of an element, such as the first line of a 
+                pesudo-element is a keyword referring to different parts of an element, such as the first line of a 
                 paragraph. Adding pesudo-elements to a selector(selector::pesudo-class) allows to style different parts 
                 of an element.
             </li>
