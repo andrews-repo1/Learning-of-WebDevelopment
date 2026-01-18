@@ -2,69 +2,14 @@
     <head>
         <meta charset="UTF-8">
         <title>Learning Note of CSS</title>
-        <!-- Add the favicon -->
-        <link rel="icon" href="img/book_icon.jpg" type="image/jpeg">
+        <!-- Add the favicon, rel stands for relationship -->
+        <link rel="icon" href="img/book_icon.png" type="image/png">
         <!-- css -->
-        <style>
-            body{
-                background: linear-gradient(to bottom, rgb(235, 250, 231), rgb(109, 147, 127));
-                margin-left: 180px;
-                margin-right: 180px;
-                margin-top: 50px;
-                margin-bottom: 50px;
-            }
-            a {
-                color: rgb(192, 73, 55);
-                text-decoration: none;
-                font-weight: bold;
-            }
-            /* has is a relation pesudo-class, a:has(img) select the <a> that contains an image anywhere. Use a:has()
-                to avoid styling other hyperlinks attached to texts */
-            a:has(img){
-                display: block; /* configure it as a block-level element */
-                width: max-content; /* shrink it to fit the size of content */
-                margin: 0 auto; /* center it to the parent */
-            }
-            a img{
-                /* configure it as a block-level element */
-                display: block;
-                border: 5px solid black;
-                /* margin: 0 auton centers the element to its parent */
-                margin: 0 auto;
-            }
-            h1 {
-                font-size: 45px;
-                text-align: center;
-            }
-            /* selector h2 implies the following rules are applied to all h2 elements in html document*/
-            h2 {
-                font-size: 30px;
-                text-align: left;
-            }
-            h3 {
-                font-size: 28px;
-                text-align: left;
-            }
-            h4, li, p {
-                font-size: 28px;
-            }
-            .content{
-                width: 80%; /*set the width of elements with class value "content" to 80% of the container*/
-            }
-            /* hover is one pesudo-class, refer to the hovered state of an element */
-            a:hover{
-                color: red;
-            }
-            /* descendant selector combined with pesudo-element marker*/
-            ul li::marker{
-                color:rgb(67, 109, 148);
-            }
-
-        </style>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <h1 style="text-align: center;">Introduction of CSS</h1>
-        <h2>Syntax</h2>
+        <h3>Syntax</h3>
         <p>
             By using selectors to specify the elements you want to style, it simplifies the styling of html files.
             <br>Selectors can decide which elements to apply to based on type, id, class, etc. Its flexibility

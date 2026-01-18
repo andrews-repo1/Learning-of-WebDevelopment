@@ -1,0 +1,62 @@
+/* css file that could be used for styling different HTML pages */
+body{
+                /* background shorthand would override other settings */
+                background: 
+                linear-gradient(to bottom, rgb(235, 250, 231) 0%, rgb(198, 224, 204) 100%, rgb(207, 237, 199) 100%);
+                margin-left: 180px;
+                margin-right: 180px;
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+            a {
+                color: rgb(192, 73, 55);
+                text-decoration: none;
+                font-weight: bold;
+            }
+            /* has is a relation pesudo-class, a:has(img) select the <a> that contains an image anywhere. Use a:has()
+                to avoid styling other hyperlinks attached to texts */
+            a:has(img){
+                display: block; /* configure it as a block-level element */
+                width: max-content; /* shrink it to fit the size of content */
+                margin: 0 auto; /* center it to the parent */
+            }
+            a img{
+                /* configure it as a block-level element */
+                display: block;
+                border: 5px solid black;
+                /* margin: 0 auton centers the element to its parent */
+                margin: 0 auto;
+            }
+            h1 {
+                font-size: 45px;
+                text-align: center;
+            }
+            /* selector h2 implies the following rules are applied to all h2 elements in html document*/
+            h2 {
+                font-size: 30px;
+                text-align: left;
+            }
+            h3 {
+                font-size: 28px;
+                text-align: left;
+            }
+            h4, li, p {
+                font-size: 20px;
+                line-height: 35px;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            .content{
+                width: 80%; /*set the width of elements with class value "content" to 80% of the container*/
+            }
+            /* hover is one pesudo-class, refer to the hovered state of an element */
+            a:hover{
+                color: red;
+            }
+            /* descendant selector combined with pesudo-element marker*/
+            ul li::marker{
+                color:rgb(67, 109, 148);
+            }
+            .img_title{
+                text-align: center;
+            }
