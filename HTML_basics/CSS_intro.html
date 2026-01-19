@@ -31,16 +31,16 @@
                 </ul>
             <li>Combinator Selectors:target elements by the hierarchy or position of differrent elements</li>
                 <ul style="list-style-type: disc;">
-                    <li>Descendant Selectors( ):target an element inside another.</li>
-                    <li>Child Selectors(>):target the direct child elements of a parent.</li>
-                    <li>Adjacent Sibling Selectors(+):target the elements immediately following the other.</li>
-                    <li>General Sibling Selectors(~):applied to all the elements following a specific element.</li>
+                    <li>Descendant Selectors( ): target an element inside another.</li>
+                    <li>Child Selectors(>): target the direct child elements of a parent.</li>
+                    <li>Adjacent Sibling Selectors(+): target the elements immediately following the other.</li>
+                    <li>General Sibling Selectors(~): applied to all the elements following a specific element.</li>
                 </ul>
             <li>Attribute Selectors:target elements based on the presence or value of certain attributes.</li>
                 <ul style="list-style-type: disc;">
-                    <li>Presence Selector:select elements with a certain attribute.</li>
-                    <li>Atrribute Value Selector:target elements with a particular attribute value.</li>
-                    <li>Substring Matching:matches elements where the attribute contains a specific substring,
+                    <li>Presence Selector: select elements with a certain attribute.</li>
+                    <li>Atrribute Value Selector: target elements with a particular attribute value.</li>
+                    <li>Substring Matching: matches elements where the attribute contains a specific substring,
                         and there are three forms of substring matching based on the start position of substring:
                         begin with(^=), contain(*=), end with($=).</li>
                 </ul>
@@ -55,5 +55,30 @@
                 of an element.
             </li>
         </ol>
+        <h3>Box Model</h3>
+        <p>
+            To correctly set an element's size and control its position in the webpage, we need to understand how the
+            CSS box model works. Every element in the HTML document is assigned with a virtual box model, which
+            represents the element's dimension and position in the webpage.   
+        </p>
+        <p>
+            A box model consists of four parts: content, padding, boarder and margin.
+            <ul>
+                <li>Content: the area where the text, image or other content exists.</li>
+                <li>Padding: transparent space between the content and the element's boarder.</li>
+                <li>Border: a frame that wraps around the elment's content and padding area.</li>
+                <li>Margin: the space between an element's border and neighbouring element.
+                </li>
+            </ul>
+        </p>
+        <p class="img_title">Illustration Diagram of Box Model</p>
+        <a href="img/box_model.png"><img src="img/box_model.png" alt="Image" style="width: 600px; height: auto;"></a> 
+        <p>
+            By default, when we set the width and height properties of an element, we are setting the size of its
+            content area, and to obtain the actual size of the element we need to count in the padding and border space
+            too. Here's an <a href="https://www.w3schools.com/css/css_boxmodel.asp" target="_blank">example</a> of how 
+            to calculte the dimension of an element. We can also set the box-sizing property to directly set the width 
+            and height of an element.
+        </p>
     </body>
 </html>

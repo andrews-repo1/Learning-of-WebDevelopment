@@ -24,14 +24,13 @@ body{
                 /* configure it as a block-level element */
                 display: block;
                 border: 5px solid black;
-                /* margin: 0 auton centers the element to its parent */
+                /* margin: 0 auto centers the element to its parent */
                 margin: 0 auto;
             }
             h1 {
                 font-size: 45px;
                 text-align: center;
             }
-            /* selector h2 implies the following rules are applied to all h2 elements in html document*/
             h2 {
                 font-size: 30px;
                 text-align: left;
