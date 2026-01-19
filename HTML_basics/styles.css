@@ -1,61 +1,158 @@
 /* css file that could be used for styling different HTML pages */
+*{
+    font-size: 1.4rem; /*not 1.4 rem*/
+}
 body{
-                /* background shorthand would override other settings */
-                background: 
-                linear-gradient(to bottom, rgb(235, 250, 231) 0%, rgb(198, 224, 204) 100%, rgb(207, 237, 199) 100%);
-                margin-left: 180px;
-                margin-right: 180px;
-                margin-top: 50px;
-                margin-bottom: 50px;
-            }
-            a {
-                color: rgb(192, 73, 55);
-                text-decoration: none;
-                font-weight: bold;
-            }
-            /* has is a relation pesudo-class, a:has(img) select the <a> that contains an image anywhere. Use a:has()
-                to avoid styling other hyperlinks attached to texts */
-            a:has(img){
-                display: block; /* configure it as a block-level element */
-                width: max-content; /* shrink it to fit the size of content */
-                margin: 0 auto; /* center it to the parent */
-            }
-            a img{
-                /* configure it as a block-level element */
-                display: block;
-                border: 5px solid black;
-                /* margin: 0 auto centers the element to its parent */
-                margin: 0 auto;
-            }
-            h1 {
-                font-size: 45px;
-                text-align: center;
-            }
-            h2 {
-                font-size: 30px;
-                text-align: left;
-            }
-            h3 {
-                font-size: 28px;
-                text-align: left;
-            }
-            h4, li, p {
-                font-size: 20px;
-                line-height: 35px;
-                margin-top: 0;
-                margin-bottom: 0;
-            }
-            .content{
-                width: 80%; /*set the width of elements with class value "content" to 80% of the container*/
-            }
-            /* hover is one pesudo-class, refer to the hovered state of an element */
-            a:hover{
-                color: red;
-            }
-            /* descendant selector combined with pesudo-element marker*/
-            ul li::marker{
-                color:rgb(67, 109, 148);
-            }
-            .img_title{
-                text-align: center;
-            }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* background shorthand would override other settings */
+    background: 
+    linear-gradient(to bottom, rgb(235, 250, 231) 0%, rgb(198, 224, 204) 100%, rgb(207, 237, 199) 100%);
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 5px solid red;
+    }
+a {
+    color: rgb(192, 73, 55);
+    text-decoration: none;
+    font-weight: bold;
+}
+/* has is a relation pesudo-class, a:has(img) select the <a> that contains an image anywhere. Use a:has()
+    to avoid styling other hyperlinks attached to texts */
+a:has(img){
+    display: block; /* configure it as a block-level element */
+    width: max-content; /* shrink it to fit the size of content */
+    margin: 0 auto; /* center it to the parent */
+    border: 10px solid yellow;
+}
+a img{
+    /* configure it as a block-level element */
+    display: block;
+    border: 0.4rem solid black;
+    /* margin: 0 auto centers the element to its parent */
+     margin: 0 auto;
+}
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    align-self: center;
+}
+h2 {
+    font-size: 1.4rem;
+    text-align: left;
+    margin-left: 8%;
+}
+h3 {
+    font-size: 1.2rem;
+    text-align: left;
+}
+h4{
+    font-size: 1.2rem; 
+    line-height: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: justify;
+}
+a, ul, ol, p {
+    font-size: 1.2rem; 
+    line-height: 1.8rem;
+    max-width: 60rem;
+
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: justify;
+}
+ul{
+    list-style: disc;
+}
+li {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    text-align: justify;
+}
+img {
+    /* vw is based on the viewport, 40vw means 40% of viewport width */
+    width:40vw;
+    max-width: 50rem;
+    height: auto;
+}
+
+/* hover is one pesudo-class, refer to the hovered state of an element */
+a:hover{
+    color: red;
+}
+/* descendant selector combined with pesudo-element marker*/
+ul li::marker{
+    color:rgb(67, 109, 148);
+}
+.img_title{
+    text-align: center;
+    align-self: center;
+}
+
+/* media query */
+@media screen and (max-width: 480px) {
+    body{
+        font-size: 0.9rem;
+        margin-left: 3%;
+        margin-right: 3%;
+        border: none;
+    }
+    h1{
+        font-size: 0.7rem;
+    }
+    h2,
+    h3,
+    h4,
+    p,
+    a,
+    li{
+        font-size: 0.6rem;
+        line-height: 0.8rem;
+        border: none;
+    }
+    ol, ul{
+        /* by default, the list marker is outside the content area
+        it would add extra padding space which could look inappropriate on small screen */
+        list-style-position: inside;
+        padding-left: 0.1rem;
+    }
+    ul>li{
+        position: relative;
+        padding-left: 0.6rem; /* space for self-defined bullet */
+    }
+    ul>li::before{
+        content: "•";
+        position: absolute;
+        left:0;
+        top:auto;
+    }
+    img{
+        border:0.2rem solid black;
+    }
+
+
+    ul{
+        list-style: none;
+        padding-left: 0;
+    }
+
+    /* this doesn't work for the image link, priority!! */
+    a{
+        border: none;
+    }
+    a:has(>img){
+        border:none;
+    }
+
+}
+
+
+

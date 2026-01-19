@@ -1,6 +1,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <!-- sets the page width to the device screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Learning Note of CSS</title>
         <!-- Add the favicon, rel stands for relationship -->
         <link rel="icon" href="img/book_icon.png" type="image/png">
@@ -8,20 +10,21 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1 style="text-align: center;">Introduction of CSS</h1>
+        <h1>Introduction of CSS</h1>
         <h3>Syntax</h3>
         <p>
             By using selectors to specify the elements you want to style, it simplifies the styling of html files.
-            <br>Selectors can decide which elements to apply to based on type, id, class, etc. Its flexibility
+            Selectors can decide which elements to apply to based on type, id, class, etc. Its flexibility
             allows more efficient and concise styling.<br>
             <a href="https://www.geeksforgeeks.org/css/css-selectors/">Details about different kinds of selectors.</a>
         </p>
-        <a href="img/css_syntax.webp"><img src="img/css_syntax.webp" style="width: 600px; height: auto;" alt="Image"></a>
+        <a href="img/css_syntax.webp"><img src="img/css_syntax.webp" alt="Image"></a>
         <h3>Selectors</h3>
         <!-- html list-->
-        <ol class="content">
+        <!-- <p> is a text-only container, doesn't contain list-->
+        <ol>
             <li>Basic Selectors:used to target elements by html element names</li>
-                <ul style="list-style-type: disc;">
+                <ul>
                     <li>Universal Selector(*): apply to all elements.</li>
                     <li>Element Selector: h1, p, etc.</li>
                     <li>Class Selector(.): apply to a certain class. Different elements could be assigned with the 
@@ -30,14 +33,14 @@
                     <li>ID selector(#): apply to the speific element with the unique id.</li>
                 </ul>
             <li>Combinator Selectors:target elements by the hierarchy or position of differrent elements</li>
-                <ul style="list-style-type: disc;">
+                <ul>
                     <li>Descendant Selectors( ): target an element inside another.</li>
                     <li>Child Selectors(>): target the direct child elements of a parent.</li>
                     <li>Adjacent Sibling Selectors(+): target the elements immediately following the other.</li>
                     <li>General Sibling Selectors(~): applied to all the elements following a specific element.</li>
                 </ul>
             <li>Attribute Selectors:target elements based on the presence or value of certain attributes.</li>
-                <ul style="list-style-type: disc;">
+                <ul>
                     <li>Presence Selector: select elements with a certain attribute.</li>
                     <li>Atrribute Value Selector: target elements with a particular attribute value.</li>
                     <li>Substring Matching: matches elements where the attribute contains a specific substring,
@@ -63,16 +66,16 @@
         </p>
         <p>
             A box model consists of four parts: content, padding, boarder and margin.
-            <ul>
-                <li>Content: the area where the text, image or other content exists.</li>
-                <li>Padding: transparent space between the content and the element's boarder.</li>
-                <li>Border: a frame that wraps around the elment's content and padding area.</li>
-                <li>Margin: the space between an element's border and neighbouring element.
-                </li>
-            </ul>
         </p>
+        <ul>
+            <li>Content: the area where the text, image or other content exists.</li>
+            <li>Padding: transparent space between the content and the element's boarder.</li>
+            <li>Border: a frame that wraps around the elment's content and padding area.</li>
+            <li>Margin: the space between an element's border and neighbouring element.
+            </li>
+        </ul>
         <p class="img_title">Illustration Diagram of Box Model</p>
-        <a href="img/box_model.png"><img src="img/box_model.png" alt="Image" style="width: 600px; height: auto;"></a> 
+        <a href="img/box_model.png"><img src="img/box_model.png" alt="Image"></a> 
         <p>
             By default, when we set the width and height properties of an element, we are setting the size of its
             content area, and to obtain the actual size of the element we need to count in the padding and border space
