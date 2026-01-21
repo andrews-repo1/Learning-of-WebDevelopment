@@ -1,21 +1,47 @@
 /* css file that could be used for styling different HTML pages */
+
+/* background color */
+/* use <html> for global background, use a wrapper for page background */
+html{
+    /* the gradient background color is treated as an image */
+    /* by default the size of gradient image is 100% of the viewport height with bakcground-repeat:repeat */
+    background: 
+    linear-gradient(to bottom, rgb(235, 250, 231), rgb(198, 224, 204));
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+
+
 *{
     font-size: 1.4rem; /*not 1.4 rem*/
 }
+
+/* don't use <body> as a layout box */
 body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    /* background shorthand would override other settings */
-    background: 
-    linear-gradient(to bottom, rgb(235, 250, 231) 0%, rgb(198, 224, 204) 100%, rgb(207, 237, 199) 100%);
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 2%;
     margin-bottom: 2%;
-    border: 5px solid red;
+
     }
+
+.container{
+    display: flex;
+    justify-content: center;
+    height: max-content;
+
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* to avoid too much extra space during zooming */
+    max-width: 80rem;
+    width: 100%;
+    height: max-content;
+
+}
 a {
     color: rgb(192, 73, 55);
     text-decoration: none;
@@ -27,7 +53,6 @@ a:has(img){
     display: block; /* configure it as a block-level element */
     width: max-content; /* shrink it to fit the size of content */
     margin: 0 auto; /* center it to the parent */
-    border: 10px solid yellow;
 }
 a img{
     /* configure it as a block-level element */
@@ -47,7 +72,7 @@ h2 {
     margin-left: 8%;
 }
 h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-align: left;
 }
 h4{
@@ -95,6 +120,55 @@ ul li::marker{
 .img_title{
     text-align: center;
     align-self: center;
+}
+
+table{
+    width: 100%;
+    border: 3px solid black;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+}
+th, td{
+    border: 3px solid black;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 2.5fr 2fr 1fr;
+    grid-template-rows: repeat(7, 1fr);
+    width: 100%;
+}
+
+.grid-title{
+    grid-column: 1 / span 3;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.grid-header{
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 3px solid black;
+    text-align: center;
+}
+
+.grid-item{
+    font-size: 1.4rem;
+    border: 3px solid black;
+    border-top: none;
+}
+
+.grid-item:nth-child(3n + 7){
+    text-align: center;
+}
+
+/* the first grid-item is the container's fifth child */
+.grid-item:not(:nth-child(3n + 7)){
+    border-right: none;
+}
+
+.grid-header:not(:nth-child(n + 4)){
+    border-right: none;
 }
 
 /* media query */

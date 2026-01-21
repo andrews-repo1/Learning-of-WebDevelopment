@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    border: 5px solid pink;
+
+}
+
+.box{
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    margin:5rem 5rem;
+    border: 5px solid yellowgreen;
+}
