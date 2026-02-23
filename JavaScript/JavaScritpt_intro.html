@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Note of JavaScript</title>
+    <link rel="stylesheet" href="../HTML_basics/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="page">
+            <h1>JavaScript</h1>
+            <h3>Introduction</h3>
+            <p>
+                JavaScript is a programming language widely used to create dynamic content for websites. It is a 
+                lightweight, cross-platform, and single-threaded programming language. It's an interpreted language 
+                that executes code line by line, providing more flexibility.
+            </p>
+            <p>
+                At first, JavaScript is only used for web development running on browsers, which have built-in JavaScript 
+                engines to execute the JavaScript code. Until 2009, Ryan Dahl embedded v8 into a C++ program, creating 
+                <span style="font-weight: bold;">Node.js</span>, which provides run-time environment for JavaScript 
+                outside of the browsers, enabling its application on the server side.
+            </p>
+            <h3>Single-threaded and Non-blocking</h3>
+            <p>
+                JavaScript is a single-threaded programming language, meaning that it can only execute one tast at a
+                time. And non-blocking or asychronous means that time-consuming operations like I/O operations won't 
+                block it while waiting for the feedbacks, instead, it will continue processing other tasks and get back
+                when the result comes out. These two characteristics are very different from C or C++, which are
+                multi-threaded and blocking by default.
+            </p>
+            <p>
+                Here is an example to illustrate the asynchronous property of JavaScript.
+            </p>
+            <!-- text inside <pre> tag preserves both spaces and line breaks -->
+            <div class="code-container" style="align-self: center;">
+<pre><code><span class="code-comment">// Testing code</span>
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+    console.log("i = " + i);
+}
+</code></pre>
+<pre><code><span class="code-comment">// Console output</span>
+    i=0
+    i=1
+    i=2
+    3
+    3
+    3
+</code></pre>
+            </div>
+            <p>
+                During each iteration, the for loop sets up a timer to print i later and also prints its value 
+                immediately. The output, however, is not 0, 1, 2. This happens because the loop completes before any 
+                timer callback executes. All callbacks run 1 second later and reference the same i variable, which by 
+                then holds the final value. This behavior occurs due to var being function-scoped, causing all callbacks 
+                to share the same reference. Using the block-scoped "let i = 0" instead would create different instances
+                during each iteration and obtain the results:0, 1, 2.
+            </p>
+            <h3>Concepts Illustration</h3>
+            <h4>Object Oriented Programming</h4>
+
+
+
+            <h4>Hoisting</h4>
+            <p>
+                In JavaScript, a variable can be declared after it has been used. This is because of hoisting, JavaScript's
+                default behavior of moving declarations to the top. Running a JavaScript program could be considered
+                accomplished in two phases: creation phase and execution phase. During the creation phase, the JavaScript
+                engine would scan the code and register the function declarations, variables bindings, etc. And during 
+                the execution process, the declarations are already known to the run-time environment, the same effect 
+                as putting the declarations at the top of the scope.
+            </p>
+            <p>
+                However, we should always avoid relying on hoisting in practice, since it may affect the readability and
+                cause mistakes. Always declare the variables first before using them.
+            </p>
+            <div class="code-container">
+<pre><code><span class="code-comment">// output: Hello, everyone.</span>
+greeting();
+function greeting(){
+    console.log("Hello, everyone.");
+}
+</code></pre>
+<pre><code><span class="code-comment">// output: undefined</span>
+console.log(a);
+var a = 5;
+</code></pre>
+            </div>
+            <h4>Temporal Dead Zone</h4>
+            <p>
+                The temporal dead zone is the time between entering the scope and executing the declarations of let and 
+                constant. Even though the variables bindings already exist because of hoisting, the variables declared
+                with let and constant are still not accessible.
+            </p>
+            <div class="code-container">
+<pre><code><span class="code-comment">// output: ReferenceError: Cannot access 'a' 
+before initialization</span>
+console.log(a);
+let a = 5;
+</code></pre> 
+            </div>
+            <h4>Overloading function</h4>
+            <p>
+                In short words, JavaScript doesn't not support Overloading functions. Functions with the same name and 
+                different parameter lists could not exist at the same time, the later one would override the former 
+                function.
+            </p>
+            <div class="code-container">
+<pre><code><span class="code-comment">// output: hi, undefined</span>
+function f1(){console.log("hi")};
+function f1(name){console.log(`hi, ${name}`)};
+f1();
+</code></pre> 
+            </div>
+            <h4>Objects</h4>
+            <p>
+                In JavaScript, An object is a dynamic data structure that stores related data as key-value pairs, 
+                where each key uniquely identifies its value. This definition is very different from that in C++, where
+                an object is an instance of a class.
+            </p>
+            <div class="code-container">
+<pre><code><span class="code-comment">// example of an object</span>
+let obj = {name:"Helen", age:23};
+</code></pre> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

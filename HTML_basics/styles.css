@@ -29,7 +29,6 @@ body{
     display: flex;
     justify-content: center;
     height: max-content;
-
 }
 
 .page{
@@ -169,6 +168,30 @@ th, td{
 
 .grid-header:not(:nth-child(n + 4)){
     border-right: none;
+}
+
+pre{
+    border: 3px solid black;
+    text-align: left;
+    padding: 0px 0px;
+    margin: 0 5px;
+}
+
+code{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.code-container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.code-comment{
+    color: rgb(5, 68, 4);
+    font-size: 1rem;
 }
 
 /* media query */
