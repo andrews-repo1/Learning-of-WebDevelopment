@@ -24,7 +24,7 @@
             </p>
             <h3>Single-threaded and Non-blocking</h3>
             <p>
-                JavaScript is a single-threaded programming language, meaning that it can only execute one tast at a
+                JavaScript is a single-threaded programming language, meaning that it can only execute one task at a
                 time. And non-blocking or asychronous means that time-consuming operations like I/O operations won't 
                 block it while waiting for the feedbacks, instead, it will continue processing other tasks and get back
                 when the result comes out. These two characteristics are very different from C or C++, which are
@@ -52,17 +52,97 @@ for (var i = 0; i < 3; i++) {
             </div>
             <p>
                 During each iteration, the for loop sets up a timer to print i later and also prints its value 
-                immediately. The output, however, is not 0, 1, 2. This happens because the loop completes before any 
+                immediately. The immediate print of i comes out before any callback from the timer and the
+                delayed output is not 0, 1, 2. This happens because the loop completes before any 
                 timer callback executes. All callbacks run 1 second later and reference the same i variable, which by 
                 then holds the final value. This behavior occurs due to var being function-scoped, causing all callbacks 
                 to share the same reference. Using the block-scoped "let i = 0" instead would create different instances
                 during each iteration and obtain the results:0, 1, 2.
             </p>
             <h3>Concepts Illustration</h3>
-            <h4>Object Oriented Programming</h4>
-
-
-
+            <h4>OOP(Object-oriented Programming)</h4>
+            <p>
+                OOP is a style of programming which combines data and the related functions that operate on it into a 
+                single unit called object. OOP provides four important features: abstraction, encapsulation, inheritance
+                and polymorphism.
+            </p>
+            <ul>
+                <li>
+                    <span style = "font-weight: bold;">Abstraction:</span> provides only the necessary interfaces to users while hiding the 
+                    implementation details. 
+                </li>
+                <li>
+                    <span style="font-weight: bold;">Encapsulation:</span> binds the data and functions that manipulate it into a single unit.
+                </li>
+                <li>
+                    <span style="font-weight: bold;">inheritance:</span> refers to the capability of a class to derive properties and characteristics
+                    from anther class.
+                </li>
+                <li>
+                    <span style="font-weight: bold;">Polymorphism:</span> mainly refers to methods overriding and methods overloading.
+                </li>
+            </ul>
+            <h4>Prototype Property</h4>
+            <p>
+                In JavaScript, only constructor functions have the prototype property, while any objects could serve as 
+                a prototype to other objects. Every object has an internal, hidden [[Prototype]] property that links it
+                to another object, allowing it inherit data and methods from another object. 
+            </p>
+            <p>
+                Now we can look at what happens when use the new keyword to create an object.
+            </p>
+            <div class="code-container" style="align-self: center;">
+<pre><code><span class="code-comment">//Conceptual Equivalent</span>
+obj = MyObj(param);                  
+</code></pre>
+<pre><code><span class="code-comment">//Conceptual Equivalent</span>
+const obj = {}
+obj.[[prototype]] = MyObj.prototype
+MyObj.call(obj, param)
+return obj  
+</code></pre>
+            </div>
+            <h4>Prototype Chain</h4>
+            <p>
+                C++ and JavaScript are both object-oriented programming language, but there's difference between them:
+                C++ is a classed-based language while JavaScript is a prototype-based language. In C++, class is the central 
+                concept, acting as a blueprint or template for creating objects and every object is an instance of a class.
+                Whille in JavaScript, the concept of class is not necessary, objects inherits directly from other objects
+                which are served as the prototype. 
+            </p>
+            <p>
+                Prototype chain refers to the inheritance relationship between objects. Property or method access starts
+                from an object itself and traverses up the property chain if not found. Object.prototype is the most basic
+                prototype at the top of property chain, and its prototype is null. Below is an example displaying the 
+                traverse of property chain.
+            </p>
+            <div class="code-container" style="align-self: center;">
+<pre><code><span class="code-comment">//my_dog -> dog -> mammals -> Animals -> 
+    Object.prototype -> null</span>
+const Animals = {
+    eats: true
+};
+const mammals = Object.create(Animals)
+mammals.has_fur = true;
+const dogs = Object.create(mammals)
+dogs.bark = true;
+function traverse(obj){
+    let current = obj;
+    while(current)
+    {
+        console.log(current);
+        current = Object.getPrototypeOf(current)
+    }
+};
+traverse(dogs);
+</code></pre>
+<pre><code><span class="code-comment">//output</span>
+{ bark: true }
+{ has_fur: true }
+{ eats: true }
+[Object: null prototype] {}
+</code></pre>
+            </div>
             <h4>Hoisting</h4>
             <p>
                 In JavaScript, a variable can be declared after it has been used. This is because of hoisting, JavaScript's
@@ -70,7 +150,8 @@ for (var i = 0; i < 3; i++) {
                 accomplished in two phases: creation phase and execution phase. During the creation phase, the JavaScript
                 engine would scan the code and register the function declarations, variables bindings, etc. And during 
                 the execution process, the declarations are already known to the run-time environment, the same effect 
-                as putting the declarations at the top of the scope.
+                as putting the declarations at the top of the scope. Noticed that the function declarations are hoisted 
+                with both the name and the function body.
             </p>
             <p>
                 However, we should always avoid relying on hoisting in practice, since it may affect the readability and
@@ -117,8 +198,7 @@ f1();
             <h4>Objects</h4>
             <p>
                 In JavaScript, An object is a dynamic data structure that stores related data as key-value pairs, 
-                where each key uniquely identifies its value. This definition is very different from that in C++, where
-                an object is an instance of a class.
+                where each key uniquely identifies its value. 
             </p>
             <div class="code-container">
 <pre><code><span class="code-comment">// example of an object</span>

@@ -56,7 +56,7 @@ a:has(img){
 a img{
     /* configure it as a block-level element */
     display: block;
-    border: 0.4rem solid black;
+    border: 0.2rem solid black;
     /* margin: 0 auto centers the element to its parent */
      margin: 0 auto;
 }
