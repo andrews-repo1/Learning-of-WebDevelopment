@@ -93,7 +93,7 @@ for (var i = 0; i < 3; i++) {
             </p>
             <div class="code-container" style="align-self: center;">
 <pre><code><span class="code-comment">//Conceptual Equivalent</span>
-obj = MyObj(param);                  
+obj = new MyObj(param);                  
 </code></pre>
 <pre><code><span class="code-comment">//Conceptual Equivalent</span>
 const obj = {}
@@ -141,6 +141,44 @@ traverse(dogs);
 { has_fur: true }
 { eats: true }
 [Object: null prototype] {}
+</code></pre>
+            </div>
+            <h4>Keyword 'class'</h4>
+            <p>
+                'class' keyword is introduced in ES6, and is now recommended for object-oriented structure. This means
+                even though the internal core of OOP in JavaScript is prototype which hasn't changed, we could write code 
+                in the fasion similar to classed-based programming language with 'class' keyword. 
+            </p>
+                        <div class="code-container" style="align-self: center;">
+<pre><code><span class="code-comment">//recommended to use keyword 'class'</span>
+class Person{
+    constructor(name){
+        this.name = name;
+    }
+    greet(){
+        console.log("Hi, " + this.name);
+    }
+}
+const my_friend = new Person("Peter");
+</code></pre>
+            </div>
+            <h4>Property Descriptor</h4>
+            <p>
+                A property descriptor is an internal metadata that defines the characteristics of a property. Use
+                Object.getOwnPropertyDescriptor(obj, prop) and Object.defineProperty(obj, prop, attr) to inspect and 
+                manually define the property descriptors. Methods in a class are non-enumerable by default.
+            </p>
+                                    <div class="code-container" style="align-self: center;">
+<pre><code><span class="code-comment">//Property Descriptor</span>
+const obj = {};
+Object.defineProperty(obj, "name", {
+    value: "Jesson",
+    writable: false,
+    enumerable: false,
+    configurable: true
+});
+console.log(obj);  <span class="code-comment">// {}   enumerable:false</span>
+console.log(Object.getOwnPropertyDescriptors(obj, "name"));
 </code></pre>
             </div>
             <h4>Hoisting</h4>
