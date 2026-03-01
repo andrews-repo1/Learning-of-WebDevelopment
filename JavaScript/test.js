@@ -1,3 +1,9 @@
-let obj = {name:"Helen", age:23};
-console.log(obj instanceof Object);
+let greet = (name) => {
+    console.log(name);
+};
+
+let greet1 = name => console.log(name);
+
+greet("Peter");
+greet1("Bob")
 

@@ -59,8 +59,7 @@ for (var i = 0; i < 3; i++) {
                 to share the same reference. Using the block-scoped "let i = 0" instead would create different instances
                 during each iteration and obtain the results:0, 1, 2.
             </p>
-            <h3>Concepts Illustration</h3>
-            <h4>OOP(Object-oriented Programming)</h4>
+            <h3>OOP(Object-oriented Programming)</h3>
             <p>
                 OOP is a style of programming which combines data and the related functions that operate on it into a 
                 single unit called object. OOP provides four important features: abstraction, encapsulation, inheritance
@@ -181,6 +180,67 @@ console.log(obj);  <span class="code-comment">// {}   enumerable:false</span>
 console.log(Object.getOwnPropertyDescriptors(obj, "name"));
 </code></pre>
             </div>
+            <h3>Asynchronous</h3>
+            <h4>Event Loop</h4>
+            <p>
+                JavaScript is single-threaded and it uses event loop to manage the execution of multiple tasks, deciding
+                which one to run next. There are several important components: call stack, macrostack and microstack.
+            </p>
+            <ul>
+                <li>
+                    Call stack: where the code runs immediately.
+                </li>
+                <li>
+                    Macrostack(Callback Queue): when an asynchronous operation is finished, its callback is pushed into 
+                    the macrostack. 
+                </li>
+                <li>
+                    Microstack: promises and other microtasks are pushed into microstack, with a higher priority than 
+                    macrostack.
+                </li>
+                <li>
+                    Event loop: continuously check the call stack, and if it's empty, it decides which task to execute
+                    next(execute the tasks in microstack first).
+                </li>
+            </ul>
+            <p class="img_title">Event loop in JavaScript</p>
+            <a href="img/event_loop.jpg">
+            <img src="img/event_loop.jpg" style="max-width:1000px; height: auto;" alt="Demonstration Picture">
+            </a>
+            <p>
+                The synchronous code always run first since the code are pushed into the call 
+                stack and executed immediately, only when the call stack is empty, the event loop moves task from 
+                microstack and macrostack into the call stack for execution. 
+            </p>
+                                                <div class="code-container" style="align-self: center;">
+<pre><code><span class="code-comment">// Example of event loop</span>
+console.log("Start");
+<span class="code-comment">// push the callback into the macrostack</span>
+setTimeout(() => {
+    console.log("setTimeout Callback");
+}, 0);
+<span class="code-comment">// push the callback into the microstack</span>
+Promise.resolve().then(() => {
+    console.log("Promise Resolved");
+});
+console.log("End");
+</code></pre>
+<pre><code><span class="code-comment">/*
+1. Run all synchronous code (call stack)
+2. Run ALL microtasks
+3. Run ONE macrotask
+4. Repeat
+*/
+// Output</span>
+Start
+End
+Promise Resolved
+setTimeout Callback
+</code></pre>
+            </div>
+            <h4>Promise</h4>
+
+            <h3>Concepts Illustration</h3>
             <h4>Hoisting</h4>
             <p>
                 In JavaScript, a variable can be declared after it has been used. This is because of hoisting, JavaScript's
@@ -243,7 +303,23 @@ f1();
 let obj = {name:"Helen", age:23};
 </code></pre> 
             </div>
-        </div>
+            <h4>Arrow Functions</h4>
+            <p>
+                Arrow functions were introduced in ES6 and provide a shorter syntax for writing anonymous functions. It's 
+                commonly used for callbacks and short function expressions.
+            </p>
+            <div class="code-container">
+<pre><code><span class="code-comment">// example of arrow functions</span>
+let greet = (name) => {
+    console.log(name);
+};
+</code></pre> 
+<pre><code><span class="code-comment">// "()"  is optional when there's only one parameter</span>
+<span class="code-comment">// "{}" and "return" can be omitted if there's only 
+    one expression</span>
+let greet1 = name => console.log(name);
+</code></pre> 
+            </div>
     </div>
 </body>
 </html>
