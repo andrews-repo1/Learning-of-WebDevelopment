@@ -19,7 +19,25 @@ function Promise(executor) {
 // the resolve and reject functions are provided by the JavaScript engine
 // resolve and reject are not keywords
 const my_promise = new Promise((resolve, reject) => {
-    //executor function body
+    const success = true;
+    if(success){
+        resolve("Operation completed successfully.");
+    }
+    else{
+        reject("Operation failed.");
+    }
 })
+my_promise
+    .then(result => console.log(result))
+    .catch(result => console.log(result));
 
-// what happens when call resolve(value)
+my_promise.then(result => console.log(result + " Again!"));
+
+/* const my_promise = new Promise(executor_function) */
+// initial state of the promise: pending
+// executor function runs immediately, resolve() is called
+// state changes to fulfilled, "Operation completed successfully." is stored in the [[PromiseResult]]
+
+/* my_promise.then(callback1).catch(callback2) */
+// callbacks in .then() and .catch() are added to [[PromiseFulfillReactions]] and [[PromiseRejectReacions]] seperately
+// since the state is fulfilled, the callback stored in the [[PromiseFulfillReactions]] is pushed into the microstack

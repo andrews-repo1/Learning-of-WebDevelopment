@@ -209,10 +209,10 @@ console.log(Object.getOwnPropertyDescriptors(obj, "name"));
             </a>
             <p>
                 The synchronous code always run first since the code are pushed into the call 
-                stack and executed immediately, only when the call stack is empty, the event loop moves task from 
+                stack and executed immediately, only when the call stack is empty, the event loop moves tasks from 
                 microstack and macrostack into the call stack for execution. 
             </p>
-                                                <div class="code-container" style="align-self: center;">
+             <div class="code-container" style="align-self: center;">
 <pre><code><span class="code-comment">// Example of event loop</span>
 console.log("Start");
 <span class="code-comment">// push the callback into the macrostack</span>
@@ -239,7 +239,58 @@ setTimeout Callback
 </code></pre>
             </div>
             <h4>Promise</h4>
+            <p>
+                A Promise is a special object in JavaScript that represents the eventual completion (or failure) of an 
+                asynchronous operation and its resulting value. Essentially, a Promise is a placeholder for a value that 
+                is not yet available but will be in the future.
+            </p>
+            <p>
+                A promise can be in one of the three states: pending, fulfilled, rejected. When a promise is settled(fulfilled 
+                or rejected), the corresponed callbacks will be added to the microstack for execution. Here is an example 
+                of the use of promise.
+            </p>
+            <div class="code-container" style="align-self: center;">
+<pre><code><span class="code-comment">// Example of promise</span>
+const my_promise = new Promise((resolve, reject) => {
+    const success = true;
+    if(success){
+        resolve("Operation completed successfully.");
+    }
+    else{
+        reject("Operation failed.");
+    }
+})
+my_promise
+    .then(result => console.log(result))
+    .catch(result => console.log(result));
+</code></pre>
+            </div>
+            <p>
+                To better understand the internal model of promise, we should be aware of the hidden internal slots of the 
+                promise: [[PromiseState]], [[PromiseResult]], [[PromiseFulfillReactions]], [[PromiseRejectReactions]]. Every promise
+                starts with the state of pending, until resolve(value) or reject(value) is called, then the promise will 
+                be settled to fulfilled or rejected(permenantly) and the value will be stored into the [[PromiseResult]]. 
+                Once the promise is settled, the callbacks stored in the [[PromiseFulfillReactions]](if resolved) or 
+                [[PromiseRejectReactions]](if rejected) will be added to the microstack and the slot will be cleared. Notice 
+                that the value stored in the [[PromiseResult]] will be passed to the callbacks as an argument. The handlers
+                provided in .then() and .catch() are added to the [[PromiseFulfillReactions]] and [[PomiseRejectReactions]] 
+                seperately.
+            </p>
+            <div class="code-container">
+<pre><code><span class="code-comment">// Internal Process</span>
+<span class="code-comment">/* const my_promise = new Promise(executor_function) */
+// initial state of the promise: pending
+// executor function runs immediately, resolve() is called
+// state changes to fulfilled, "Operation completed successfully." is stored in the [[PromiseResult]]
 
+/* my_promise.then(callback1).catch(callback2) */
+// callbacks in .then() and .catch() are added to [[PromiseFulfillReactions]] and [[PromiseRejectReacions]] 
+seperately
+// since the state is fulfilled, the callback stored in the [[PromiseFulfillReactions]] is pushed into the 
+microstack
+</span>
+</code></pre>
+            </div>
             <h3>Concepts Illustration</h3>
             <h4>Hoisting</h4>
             <p>

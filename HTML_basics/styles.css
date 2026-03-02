@@ -171,10 +171,13 @@ th, td{
 }
 
 pre{
+    white-space: pre-wrap;
+    word-wrap: break-word;
     border: 3px solid black;
     text-align: left;
     padding: 0px 0px;
     margin: 0 5px;
+    max-width: 40rem;
 }
 
 code{
@@ -187,6 +190,7 @@ code{
     flex-wrap: wrap;
     max-width: 50rem;
     margin: 0 auto;
+
 }
 
 .code-comment{
